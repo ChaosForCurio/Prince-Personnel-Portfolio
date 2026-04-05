@@ -1,0 +1,116 @@
+<script setup>
+import Lenis from 'lenis'
+import { onMounted, onUnmounted } from 'vue'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+if (process.client) {
+  gsap.registerPlugin(ScrollTrigger)
+}
+
+const lenis = ref(null)
+
+onMounted(() => {
+  lenis.value = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+  })
+
+  lenis.value.on('scroll', ScrollTrigger.update)
+
+  gsap.ticker.add((time) => {
+    lenis.value.raf(time * 1000)
+  })
+
+  gsap.ticker.lagSmoothing(0)
+})
+
+onUnmounted(() => {
+  if (lenis.value) {
+    lenis.value.destroy()
+  }
+})
+
+provide('lenis', lenis)
+</script>
+
+<template>
+  <div class="selection:bg-primary selection:text-white">
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </div>
+</template>
+
+<style>
+@import '@unocss/reset/tailwind.css';
+
+:root {
+  --primary: #ba002b;
+  --secondary: #7f40b0;
+  --background: #f9f9f9;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: #1a1c1c;
+  overflow-x: hidden;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #920020;
+}
+
+/* Global Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+</style>
