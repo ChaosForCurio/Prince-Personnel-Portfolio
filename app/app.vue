@@ -42,7 +42,9 @@ provide('lenis', lenis)
 </script>
 
 <template>
-  <div class="selection:bg-primary selection:text-white">
+  <div class="selection:bg-primary selection:text-white font-mono text-white min-h-screen bg-transparent relative">
+    <PixelGridBackground />
+    <CustomCursor />
     <GlassNav />
     <NuxtLayout>
       <NuxtPage />
@@ -56,62 +58,52 @@ provide('lenis', lenis)
 :root {
   --primary: #ba002b;
   --secondary: #7f40b0;
-  --background: #f9f9f9;
+  --background: #050505;
 }
 
 html, body {
   margin: 0;
   padding: 0;
   background-color: var(--background);
-  color: #1a1c1c;
+  color: #ffffff;
   overflow-x: hidden;
+  font-family: 'JetBrains Mono', monospace;
+  cursor: none !important; /* Hide system cursor globally */
 }
 
-html.lenis, html.lenis body {
-  height: auto;
+/* Page Transitions - Technical Fade & Blur */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+.page-enter-from {
+  opacity: 0;
+  filter: blur(20px) grayscale(100%);
+  transform: scale(1.05);
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+.page-leave-to {
+  opacity: 0;
+  filter: blur(10px) grayscale(100%);
+  transform: scale(0.98);
 }
 
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-/* Custom Scrollbar */
+/* Custom Scrollbar - Minimal */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #920020;
-}
-
-/* Global Transitions */
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
+::selection {
+  background: var(--primary);
+  color: white;
 }
 </style>

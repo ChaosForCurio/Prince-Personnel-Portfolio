@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Brand Primary Red Background -->
+  <rect width="512" height="512" fill="#ba002b"/>
+  
+  <!-- "P" - Clean Geometric Typography (Epilogue inspired) -->
+  <path d="M160 110 H290 C370 110 410 170 410 235 C410 300 370 360 290 360 H225 V420 H160 V110 M225 175 V295 H290 C325 295 345 275 345 235 C345 195 325 175 290 175 H225Z" fill="white" />
+</svg>

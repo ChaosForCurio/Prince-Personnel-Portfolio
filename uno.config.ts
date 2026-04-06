@@ -11,25 +11,26 @@ import {
 
 export default defineConfig({
   shortcuts: [
-    ['btn', 'px-6 py-3 font-semibold transition-all active:scale-95 duration-200 ease-in-out uppercase tracking-tighter font-headline inline-block cursor-pointer text-center'],
+    ['btn', 'px-6 py-3 font-semibold transition-all active:scale-95 duration-200 ease-in-out uppercase tracking-tighter font-mono inline-block cursor-pointer text-center'],
     ['btn-primary', 'bg-primary text-on-primary hover:bg-primary-container border-none'],
-    ['btn-secondary', 'bg-transparent text-primary border-2 border-solid border-primary'],
-    ['structural-divider', 'h-2 md:h-8 bg-primary w-full'],
-    ['glass-effect', 'bg-[#f9f9f9]/80 backdrop-blur-xl'],
-    ['label-text', 'font-label uppercase tracking-[0.2em] text-xs font-bold'],
+    ['btn-secondary', 'bg-transparent text-primary border-1 border-solid border-primary'],
+    ['structural-divider', 'h-[1px] bg-primary/20 w-full'],
+    ['glass-effect', 'bg-black/80 backdrop-blur-xl border-1 border-white/10'],
+    ['label-text', 'font-mono uppercase tracking-[0.2em] text-xs font-bold opacity-70'],
+    ['grid-fine', 'bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:40px_40px]'],
   ],
   theme: {
     colors: {
       primary: '#ba002b',
       primaryContainer: '#e90039',
       secondary: '#7f40b0',
-      background: '#f9f9f9',
-      surface: '#f9f9f9',
-      surfaceContainer: '#eeeeee',
-      surfaceContainerLowest: '#ffffff',
-      onSurface: '#1a1c1c',
+      background: '#050505',
+      surface: '#0a0a0a',
+      surfaceContainer: '#111111',
+      surfaceContainerLowest: '#000000',
+      onSurface: '#ffffff',
       onPrimary: '#ffffff',
-      onSurfaceVariant: '#5f3e3e',
+      onSurfaceVariant: '#a0a0a0',
     },
     borderRadius: {
       DEFAULT: '0px',
@@ -49,11 +50,15 @@ export default defineConfig({
       provider: 'google',
       fonts: {
         headline: {
-          name: 'Epilogue',
-          weights: ['700', '800', '900']
+          name: 'JetBrains Mono',
+          weights: ['700', '800']
+        },
+        mono: {
+          name: 'JetBrains Mono',
+          weights: ['400', '500', '700']
         },
         body: {
-          name: 'Work Sans',
+          name: 'Inter',
           weights: ['300', '400', '500']
         },
         label: {

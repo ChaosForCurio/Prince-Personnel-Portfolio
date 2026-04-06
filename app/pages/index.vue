@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-  title: 'Prince Mehra | Bold Curator & Digital Designer'
+  title: 'Prince Mehra'
 })
 </script>
 
@@ -8,12 +8,9 @@ useHead({
   <main>
     <Hero />
     
-    <StructuralDivider />
-    
-    <section id="work">
-      <WorkGrid />
+    <section id="work-horizontal">
+      <HorizontalScrollSection />
     </section>
-
     <StructuralDivider />
     
     <section id="approach">
