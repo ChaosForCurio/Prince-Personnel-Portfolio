@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
   ],
   css: [
-    '@unocss/reset/tailwind.css',
+    // Reset moved to app.vue script
   ],
   app: {
     head: {

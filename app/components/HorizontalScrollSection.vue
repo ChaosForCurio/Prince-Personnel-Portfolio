@@ -30,7 +30,7 @@ onMounted(() => {
       // It's the total scroll width of the track minus the viewport width
       const getScrollAmount = () => -(track.scrollWidth - window.innerWidth)
       
-      scrollTween = gsap.to(track, {
+      gsap.to(track, {
         x: getScrollAmount,
         ease: "none",
         scrollTrigger: {
@@ -38,7 +38,6 @@ onMounted(() => {
           start: "top top",
           end: () => `+=${track.scrollWidth - window.innerWidth}`,
           pin: true,
-          animation: scrollTween,
           scrub: 1, // Smooth scrubbing
           invalidateOnRefresh: true // Recalculate on resize
         }
@@ -57,22 +56,22 @@ onUnmounted(() => {
 
 <template>
   <!-- The outer section acts as the pin spacer -->
-  <section ref="sectionRef" class="horizontal-scroll-section relative h-screen bg-black overflow-hidden flex items-center border-y border-zinc-900 border-b border-t">
+  <section ref="sectionRef" class="horizontal-scroll-section relative h-screen bg-white overflow-hidden flex items-center border-y border-black/5">
     
     <!-- Decorative background elements -->
-    <div class="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] blend-overlay"></div>
-    <div class="absolute top-1/2 left-0 w-full h-px bg-zinc-900/50 -translate-y-1/2 pointer-events-none z-0"></div>
+    <div class="absolute inset-0 z-0 pointer-events-none opacity-5 bg-black/5" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAA6fKPSAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAlQTFRF7u7uAAAA////8uU76AAAAAF0Uk5TAEDm2GYAAAABYktHRACIBR1IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH2wMREBIny9rj7AAAAElJREFUeNpjYGRkZGJmYWVjZ2Dk4OTi5uHl4+fjF+AXEBQS5hHmExYQFBImEBIWEhYRFhEWERYRlhGWERYRFhGWERYRFhGWERYRl/8B4S0C+hF8YkwAAAAASUVORK5CYII=')"></div>
+    <div class="absolute top-1/2 left-0 w-full h-px bg-black/5 -translate-y-1/2 pointer-events-none z-0"></div>
 
     <!-- The exact scrolling track -->
     <div ref="trackRef" class="horizontal-track flex h-full items-center relative z-10 pl-8 md:pl-24 pr-[30vw]">
       
       <!-- Intro Card inside horizontal scroll -->
       <div class="w-[80vw] sm:w-[50vw] md:w-[40vw] flex-shrink-0 mr-12 md:mr-32 flex flex-col justify-center h-full">
-        <h2 class="text-4xl md:text-7xl font-black text-white leading-none uppercase mb-6 uppercase tracking-tighter mix-blend-difference">
+        <h2 class="text-4xl md:text-7xl font-black text-onSurface leading-none uppercase mb-6 uppercase tracking-tighter">
           Selected <br>
           <span class="text-primary italic font-serif tracking-normal">Works</span>
         </h2>
-        <p class="text-zinc-500 font-mono text-sm max-w-xs uppercase">
+        <p class="text-onSurfaceVariant font-mono text-sm max-w-xs uppercase">
           A showcase of recent digital monuments focusing on interaction and technical precision.
         </p>
       </div>
@@ -83,26 +82,26 @@ onUnmounted(() => {
         :key="item.id"
         class="horizontal-item w-[85vw] sm:w-[60vw] md:w-[45vw] h-[60vh] flex-shrink-0 mr-8 md:mr-16 relative group"
       >
-        <div class="w-full h-full overflow-hidden bg-zinc-950 relative border-l border-zinc-800">
+        <div class="w-full h-full overflow-hidden bg-surfaceContainer relative border-l border-black/5">
           
-          <!-- Image with parralax scale effect on hover -->
+          <!-- Image with parallax scale effect on hover -->
           <img 
             :src="item.image" 
             :alt="item.title"
-            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-105"
+            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-105"
           >
           
-          <!-- Overlay gradient -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700"></div>
+          <!-- Overlay gradient - adjusted for light background -->
+          <div class="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-700"></div>
           
           <!-- Content -->
           <div class="absolute bottom-0 left-0 w-full p-8 md:p-12 flex flex-col justify-end">
             <div class="flex justify-between items-end mb-4 overflow-hidden">
               <span class="font-mono text-xs text-primary tracking-[0.2em] transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-100">{{ item.category }} // {{ item.year }}</span>
-              <span class="font-mono text-xs text-zinc-500">{{ item.id }}</span>
+              <span class="font-mono text-xs text-onSurfaceVariant">{{ item.id }}</span>
             </div>
             
-            <h3 class="text-3xl md:text-5xl font-bold uppercase tracking-tight text-zinc-200 group-hover:text-white transition-colors duration-500">
+            <h3 class="text-3xl md:text-5xl font-bold uppercase tracking-tight text-onSurface group-hover:text-primary transition-colors duration-500">
               {{ item.title }}
             </h3>
           </div>

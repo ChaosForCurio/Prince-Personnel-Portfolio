@@ -3,6 +3,7 @@ import Lenis from 'lenis'
 import { onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import '@unocss/reset/tailwind.css'
 
 if (process.client) {
   gsap.registerPlugin(ScrollTrigger)
@@ -42,7 +43,7 @@ provide('lenis', lenis)
 </script>
 
 <template>
-  <div class="selection:bg-primary selection:text-white font-mono text-white min-h-screen bg-transparent relative">
+  <div class="selection:bg-primary selection:text-white font-mono text-onSurface min-h-screen bg-transparent relative">
     <PixelGridBackground />
     <CustomCursor />
     <GlassNav />
@@ -53,19 +54,17 @@ provide('lenis', lenis)
 </template>
 
 <style>
-@import '@unocss/reset/tailwind.css';
-
 :root {
   --primary: #ba002b;
   --secondary: #7f40b0;
-  --background: #050505;
+  --background: #ffffff;
 }
 
 html, body {
   margin: 0;
   padding: 0;
   background-color: var(--background);
-  color: #ffffff;
+  color: #050505;
   overflow-x: hidden;
   font-family: 'JetBrains Mono', monospace;
   cursor: none !important; /* Hide system cursor globally */
@@ -95,7 +94,7 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {

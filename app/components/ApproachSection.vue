@@ -46,7 +46,7 @@ onMounted(() => {
   })
 
   // Card Reveal Animations
-  gsap.from('.approach-card', {
+  gsap.from('.approach-node', {
     y: 100,
     rotateX: -20,
     opacity: 0,
@@ -74,7 +74,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="approach-section py-24 md:py-48 bg-black overflow-hidden relative border-t border-zinc-900 border-b min-h-screen">
+  <section class="approach-section py-24 md:py-48 bg-white overflow-hidden relative border-t border-zinc-100 border-b min-h-screen">
     <!-- Abstract Canvas Background (Locked to viewport background) -->
     <div class="absolute inset-0 z-0 pointer-events-none opacity-20 filter contrast-125">
       <AbstractGridCanvas />
@@ -82,11 +82,11 @@ onMounted(() => {
 
     <div class="max-w-[1440px] mx-auto px-8 md:px-16 relative z-10 w-full">
       <!-- Section Intro Header -->
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-32 md:mb-48 border-b border-zinc-900 pb-12">
-        <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-white">
+      <div class="approach-left-content flex flex-col md:flex-row justify-between items-start md:items-end mb-32 md:mb-48 border-b border-zinc-900 pb-12">
+        <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9] text-onSurface">
           <span class="block text-primary font-mono text-sm tracking-[0.3em] mb-4 opacity-70">SYSTEM_ARCHITECTURE</span>
           Structural<br>
-          <span ref="titleRef" class="text-transparent" style="-webkit-text-stroke: 1px #fff;">Logic</span>
+          <span ref="titleRef" class="text-transparent" style="-webkit-text-stroke: 1px #000;">Logic</span>
         </h2>
         <div class="font-mono text-xs text-zinc-500 uppercase tracking-widest leading-loose max-w-sm mt-12 md:mt-0 md:text-right">
           A rigid methodology designed for scalable, high-impact digital execution. Bypassing convention for pure precision.
@@ -97,21 +97,21 @@ onMounted(() => {
       <div class="relative w-full">
         <!-- Visual Grid Columns (Background structural lines) -->
         <div class="absolute inset-0 flex justify-between pointer-events-none opacity-20">
-          <div class="w-px h-full bg-zinc-700"></div>
-          <div class="w-px h-full bg-zinc-700 hidden md:block"></div>
-          <div class="w-px h-full bg-zinc-700 hidden md:block"></div>
-          <div class="w-px h-full bg-zinc-700"></div>
+          <div class="w-px h-full bg-zinc-200"></div>
+          <div class="w-px h-full bg-zinc-200 hidden md:block"></div>
+          <div class="w-px h-full bg-zinc-200 hidden md:block"></div>
+          <div class="w-px h-full bg-zinc-200"></div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-y-12 gap-x-8 md:gap-y-0 relative z-10">
+        <div class="approach-grid grid grid-cols-1 md:grid-cols-4 gap-y-12 gap-x-8 md:gap-y-0 relative z-10">
           
           <!-- Phase 01 -->
-          <div class="md:col-start-1 md:col-end-3 approach-node p-8 border border-zinc-800 bg-black hover:border-primary transition-colors duration-500 group relative">
+          <div class="md:col-start-1 md:col-end-3 approach-node p-8 border border-zinc-200 bg-white hover:border-primary transition-colors duration-500 group relative">
             <div class="absolute -top-1 -left-1 w-2 h-2 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="font-mono text-[10px] text-zinc-500 mb-8 border-b border-zinc-800 pb-4">
+            <div class="font-mono text-[10px] text-zinc-500 mb-8 border-b border-zinc-200 pb-4">
               [ NODE_01 ] <span class="float-right text-primary">STATUS: AWAIT</span>
             </div>
-            <h3 class="text-3xl font-black uppercase tracking-tighter text-white mb-6 group-hover:text-primary transition-colors">
+            <h3 class="text-3xl font-black uppercase tracking-tighter text-onSurface mb-6 group-hover:text-primary transition-colors">
               01. Immerse
             </h3>
             <div class="font-mono text-xs text-zinc-400 leading-loose flex flex-col gap-2">
@@ -122,15 +122,15 @@ onMounted(() => {
           </div>
 
           <!-- Connecting line mobile hidden, desktop visible -->
-          <div class="hidden md:block col-start-2 border-b border-zinc-800 -translate-y-1/2 w-full self-end pointer-events-none"></div>
+          <div class="hidden md:block col-start-2 border-b border-zinc-200 -translate-y-1/2 w-full self-end pointer-events-none"></div>
 
           <!-- Phase 02 -->
-          <div class="md:col-start-2 md:col-end-4 approach-node md:-mt-12 p-8 border border-zinc-800 bg-black hover:border-primary transition-colors duration-500 group relative">
+          <div class="md:col-start-2 md:col-end-4 approach-node md:-mt-12 p-8 border border-zinc-200 bg-white hover:border-primary transition-colors duration-500 group relative">
             <div class="absolute -bottom-1 -right-1 w-2 h-2 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="font-mono text-[10px] text-zinc-500 mb-8 border-b border-zinc-800 pb-4">
+            <div class="font-mono text-[10px] text-zinc-500 mb-8 border-b border-zinc-200 pb-4">
               [ NODE_02 ] <span class="float-right text-primary">STATUS: ALLOCATED</span>
             </div>
-            <h3 class="text-3xl font-black uppercase tracking-tighter text-white mb-6 group-hover:text-primary transition-colors">
+            <h3 class="text-3xl font-black uppercase tracking-tighter text-onSurface mb-6 group-hover:text-primary transition-colors">
               02. Ideate
             </h3>
             <div class="font-mono text-xs text-zinc-400 leading-loose flex flex-col gap-2">
@@ -141,15 +141,15 @@ onMounted(() => {
           </div>
 
           <!-- Connecting line -->
-          <div class="hidden md:block col-start-3 border-b border-zinc-800 -translate-y-[150%] w-full pointer-events-none"></div>
+          <div class="hidden md:block col-start-3 border-b border-zinc-200 -translate-y-[150%] w-full pointer-events-none"></div>
           
           <!-- Phase 03 -->
-          <div class="md:col-start-3 md:col-end-5 approach-node md:-mt-24 p-8 border border-zinc-800 bg-black hover:border-primary transition-colors duration-500 group relative">
+          <div class="md:col-start-3 md:col-end-5 approach-node md:-mt-24 p-8 border border-zinc-200 bg-white hover:border-primary transition-colors duration-500 group relative">
             <div class="absolute -top-1 -right-1 w-2 h-2 bg-primary opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="font-mono text-[10px] text-zinc-500 mb-8 border-b border-zinc-800 pb-4">
+            <div class="font-mono text-[10px] text-zinc-500 mb-8 border-b border-zinc-200 pb-4">
               [ NODE_03 ] <span class="float-right text-primary">STATUS: PROCESSING</span>
             </div>
-            <h3 class="text-3xl font-black uppercase tracking-tighter text-white mb-6 group-hover:text-primary transition-colors">
+            <h3 class="text-3xl font-black uppercase tracking-tighter text-onSurface mb-6 group-hover:text-primary transition-colors">
               03. Refine
             </h3>
             <div class="font-mono text-xs text-zinc-400 leading-loose flex flex-col gap-2">
@@ -163,16 +163,16 @@ onMounted(() => {
           <div class="md:col-start-2 md:col-end-4 approach-node md:mt-12 p-8 border border-primary/30 bg-primary/5 hover:border-primary transition-colors duration-500 group relative">
             <div class="absolute -bottom-1 -left-1 w-2 h-2 bg-primary opacity-100"></div>
             <div class="absolute -top-1 -right-1 w-2 h-2 bg-primary opacity-100"></div>
-            <div class="font-mono text-[10px] text-zinc-400 mb-8 border-b border-zinc-800 pb-4">
+            <div class="font-mono text-[10px] text-zinc-400 mb-8 border-b border-zinc-200 pb-4">
               [ NODE_04 ] <span class="float-right text-primary animate-pulse w-max">STATUS: DEPLOY_READY</span>
             </div>
-            <h3 class="text-3xl font-black uppercase tracking-tighter text-white mb-6 group-hover:text-white transition-colors">
+            <h3 class="text-3xl font-black uppercase tracking-tighter text-onSurface mb-6 group-hover:text-onSurface transition-colors">
               04. Execute
             </h3>
             <div class="font-mono text-xs text-zinc-300 leading-loose flex flex-col gap-2">
                <span><span class="text-primary">> RUN:</span> LAUNCH_SEQUENCE()</span>
                <span class="pl-4 opacity-70 text-zinc-500">Compiling asset pipelines.</span>
-               <span class="pl-4 opacity-70 text-white">Digital monument transferred to live.</span>
+               <span class="pl-4 opacity-70 text-onSurface">Digital monument transferred to live.</span>
             </div>
           </div>
 

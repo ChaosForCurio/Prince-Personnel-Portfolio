@@ -34,16 +34,16 @@ onMounted(() => {
     <div 
       v-for="project in projects" 
       :key="project.id"
-      class="project-card relative group aspect-square md:aspect-video overflow-hidden border-b-2 border-zinc-200"
-      :class="project.id % 2 === 0 ? '' : 'md:border-r-2'"
+      class="project-card relative group aspect-square md:aspect-video overflow-hidden border-b border-black/5"
+      :class="project.id % 2 === 0 ? '' : 'md:border-r'"
     >
       <!-- Hover Overlay -->
-      <div class="absolute inset-0 bg-transparent group-hover:bg-onSurface/95 transition-all duration-700 z-10 flex flex-col justify-end p-8 md:p-16 opacity-0 group-hover:opacity-100">
-        <div class="label-text text-zinc-500 mb-4">{{project.type}}</div>
-        <h3 class="text-4xl md:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-none">
+      <div class="absolute inset-0 bg-transparent group-hover:bg-white/95 transition-all duration-700 z-10 flex flex-col justify-end p-8 md:p-16 opacity-0 group-hover:opacity-100">
+        <div class="label-text text-primary mb-4">{{project.type}}</div>
+        <h3 class="text-4xl md:text-7xl font-black text-onSurface uppercase tracking-tighter mb-6 leading-none">
           {{project.name}}
         </h3>
-        <p class="text-zinc-400 max-w-md font-body text-lg leading-relaxed">
+        <p class="text-onSurfaceVariant max-w-md font-body text-lg leading-relaxed">
           {{project.desc}}
         </p>
         <div class="mt-8">
@@ -54,16 +54,16 @@ onMounted(() => {
       </div>
       
       <!-- Static Label -->
-      <div class="absolute top-8 left-8 z-10 label-text text-zinc-300 group-hover:opacity-0 transition-opacity">
+      <div class="absolute top-8 left-8 z-10 label-text text-onSurfaceVariant/50 group-hover:opacity-0 transition-opacity">
         [NO. {{project.id.toString().padStart(2, '0')}}]
       </div>
 
       <!-- Main Content / Background -->
-      <div class="w-full h-full bg-zinc-900 transition-transform duration-1000 group-hover:scale-105 flex items-center justify-center overflow-hidden">
+      <div class="w-full h-full bg-surfaceContainer transition-transform duration-1000 group-hover:scale-105 flex items-center justify-center overflow-hidden">
          <img 
            :src="project.image" 
            :alt="project.name"
-           class="w-full h-full object-cover opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-1000"
+           class="w-full h-full object-cover opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-1000"
          />
       </div>
     </div>

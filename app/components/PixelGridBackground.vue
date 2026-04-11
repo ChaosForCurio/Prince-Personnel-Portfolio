@@ -43,20 +43,22 @@ const fragmentShaderSource = `
     
     vec3 color = vec3(0.0); // Transparent background base
     
-    // Fine Grid
-    color += vec3(0.06) * grid(gl_FragCoord.xy, 40.0);
+    // Fine Grid (Dark for Light Theme)
+    float g = grid(gl_FragCoord.xy, 40.0);
+    color = vec3(0.0); 
+    float gridAlpha = g * 0.08;
     
     // Highlight cells near mouse
-    color += vec3(0.8, 0.0, 0.1) * disturbance * 0.4; // Stronger Brand Red glow
+    vec3 glowColor = vec3(0.8, 0.0, 0.1);
+    float glowAlpha = disturbance * 0.2;
     
-    // Pixel bits
+    // Set combined color with alpha
+    float finalAlpha = max(gridAlpha, glowAlpha);
     if (pixDist > 0.5) {
-      color += vec3(0.2) * sin(u_time * 5.0 + pixUV.x * 100.0);
+       finalAlpha = max(finalAlpha, 0.1);
+       color = mix(color, vec3(0.1), 0.5);
     }
-
-    // Set combined color with alpha based on grid/disturbance intensity
-    float alpha = max(0.1, color.r + color.g + color.b);
-    gl_FragColor = vec4(color, alpha);
+    gl_FragColor = vec4(glowColor * glowAlpha, finalAlpha);
   }
 `
 

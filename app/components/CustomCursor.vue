@@ -33,23 +33,23 @@ onUnmounted(() => {
     <!-- Main Precision Dot -->
     <div 
       ref="cursor"
-      class="absolute w-1.5 h-1.5 bg-primary -left-0.75 -top-0.75 mix-blend-difference"
+      class="absolute w-1.5 h-1.5 bg-primary -left-0.75 -top-0.75"
     ></div>
     
-    <!-- Lagging 'Glitch' Follower -->
+    <!-- Lagging Outer Ring -->
     <div 
       ref="follower"
-      class="absolute w-8 h-8 border-[0.5px] border-primary/30 -left-4 -top-4 mix-blend-difference opacity-50"
+      class="absolute w-8 h-8 border border-primary/20 -left-4 -top-4 opacity-50"
     ></div>
     
-    <!-- Crosshair Lines -->
+    <!-- Crosshair Lines - now dark for light mode -->
     <div 
       ref="cursor"
-      class="absolute w-[20px] h-[0.5px] bg-white/20 -left-[10px] top-0"
+      class="absolute w-[20px] h-[0.5px] bg-black/10 -left-[10px] top-0"
     ></div>
     <div 
       ref="cursor"
-      class="absolute w-[0.5px] h-[20px] bg-white/20 left-0 -top-[10px]"
+      class="absolute w-[0.5px] h-[20px] bg-black/10 left-0 -top-[10px]"
     ></div>
   </div>
 </template>
